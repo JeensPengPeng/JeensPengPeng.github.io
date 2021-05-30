@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>Vonic</title>
+  <!-- Google Fonts -->
+  <link href="Vonic_files/css.css" rel="stylesheet">
+<link href="Vonic_files/app.css" rel="stylesheet"><style type="text/css">._v-container[data-v-4df801be]{-webkit-tap-highlight-color:rgba(0,0,0,0);width:100%;height:100%;position:absolute;top:0;left:0;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none}._v-container>._v-content[data-v-4df801be]{width:100%;-webkit-transform-origin:left top;-webkit-transform:translateZ(0);-moz-transform-origin:left top;-moz-transform:translateZ(0);-ms-transform-origin:left top;-ms-transform:translateZ(0);-o-transform-origin:left top;-o-transform:translateZ(0);transform-origin:left top;transform:translateZ(0)}._v-container>._v-content>.pull-to-refresh-layer[data-v-4df801be]{width:100%;height:60px;margin-top:-60px;text-align:center;font-size:16px;color:#ccc}._v-container>._v-content>.loading-layer[data-v-4df801be]{width:100%;height:60px;text-align:center;font-size:16px;line-height:60px;color:#ccc;position:relative}._v-container>._v-content>.loading-layer>.no-data-text[data-v-4df801be]{position:absolute;left:0;top:0;width:100%;height:100%;z-index:1}._v-container>._v-content>.loading-layer>.no-data-text[data-v-4df801be],._v-container>._v-content>.loading-layer>.spinner-holder[data-v-4df801be]{opacity:0;transition:opacity .15s linear;-webkit-transition:opacity .15s linear}._v-container>._v-content>.loading-layer>.no-data-text.active[data-v-4df801be],._v-container>._v-content>.loading-layer>.spinner-holder.active[data-v-4df801be]{opacity:1}._v-container>._v-content>.loading-layer .spinner-holder[data-v-4df801be],._v-container>._v-content>.pull-to-refresh-layer .spinner-holder[data-v-4df801be]{text-align:center;-webkit-font-smoothing:antialiased}._v-container>._v-content>.loading-layer .spinner-holder .arrow[data-v-4df801be],._v-container>._v-content>.pull-to-refresh-layer .spinner-holder .arrow[data-v-4df801be]{width:20px;height:20px;margin:8px auto 0;-webkit-transform:translateZ(0) rotate(0deg);transform:translateZ(0) rotate(0deg);-webkit-transition:-webkit-transform .2s linear;transition:transform .2s linear}._v-container>._v-content>.loading-layer .spinner-holder .text[data-v-4df801be],._v-container>._v-content>.pull-to-refresh-layer .spinner-holder .text[data-v-4df801be]{display:block;margin:0 auto;font-size:14px;line-height:20px;color:#aaa}._v-container>._v-content>.loading-layer .spinner-holder .spinner[data-v-4df801be],._v-container>._v-content>.pull-to-refresh-layer .spinner-holder .spinner[data-v-4df801be]{margin-top:14px;width:32px;height:32px;//:#444;stroke:#69717d}._v-container>._v-content>.pull-to-refresh-layer.active .spinner-holder .arrow[data-v-4df801be]{-webkit-transform:translateZ(0) rotate(180deg);transform:translateZ(0) rotate(180deg)}</style><style type="text/css">
+[vswipe] {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+</style><style type="text/css">
+.swipe-item {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+</style><style type="text/css">
+.logo {
+  width: 100%;
+  height: 80px;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHN0eWxlPSJiYWNrZ3JvdW5kOiBub25lOyI+CiAgPGRlZnM+CiAgICA8Y2lyY2xlIGlkPSJhIiBjeD0iMjU2IiBjeT0iMjU2IiByPSIyNTYiLz4KICAgIDxtYXNrIGlkPSJiIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgZmlsbD0id2hpdGUiPgogICAgICA8dXNlIHhsaW5rOmhyZWY9IiNhIi8+CiAgICA8L21hc2s+CiAgICA8cG9seWdvbiBpZD0iYyIgcG9pbnRzPSIxMTUuNTY5IC4wMTcgMTQ5Ljk4NCA1Ni4zOTkgMTg4LjEwOCAuMDE3IDI5OS45NjcgLjAxNyAxNDkuOTg0IDIyOS43NzMgMCAuMDE3Ii8+CiAgPC9kZWZzPgogIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICA8dXNlIHN0cm9rZT0iIzQ3QjU4NCIgc3Ryb2tlLXdpZHRoPSIxMiIgbWFzaz0idXJsKCNiKSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiB4bGluazpocmVmPSIjYSIvPgogICAgPGNpcmNsZSBjeD0iNDM1LjUiIGN5PSI3OC41IiByPSIyNi41IiBmaWxsPSIjNDdCNTg0Ii8+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDYgMTcxKSI+CiAgICAgIDxtYXNrIGlkPSJkIiBmaWxsPSJ3aGl0ZSI+CiAgICAgICAgPHVzZSB4bGluazpocmVmPSIjYyIvPgogICAgICA8L21hc2s+CiAgICAgIDx1c2UgZmlsbD0iIzQ3QjU4NCIgeGxpbms6aHJlZj0iI2MiLz4KICAgICAgPHBvbHlnb24gZmlsbD0iIzMyNTg0RiIgcG9pbnRzPSIyOTkuOTY3IC04OS40NDggMTQ5Ljk4NCAxNDAuMzA4IDAgLTg5LjQ0OCIgbWFzaz0idXJsKCNkKSIvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+Cg==);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60px 60px;
+}
+.code-name {
+  text-align: center;
+  font-family: "Monoton", sans-serif;
+  font-size: 24px;
+  line-height: 24px;
+  color: #47B584;
+  margin-bottom: 10px;
+}
+.code-desc {
+  color: #999;
+  margin: 5px auto 15px auto;
+  font-family: "Josefin Sans", sans-serif;
+}
+.vonic-stars {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.vonic-stars body {
+    text-align: center;
+}
+*::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+</style><style type="text/css">.footer{height:40px}</style><style type="text/css">
+.entrance {
+  height: 120px;
+  padding: 35px 0;
+}
+.entrance .icon {
+    font-size: 30px;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 6px;
+}
+.entrance span {
+    font-size: 14px;
+    line-height: 14px;
+}
+.cells.cells-44 > .row > .col {
+  padding: 30px 0;
+}
+.cells-33 > .row > .col {
+  padding: 50px 0;
+}
+.cells-22 > .row > .col {
+  padding: 30px 0;
+}
+</style><style type="text/css">
+p[data-v-70a216b9] {
+  padding: 0 10px;
+  margin-bottom: 0;
+}
+p[data-v-70a216b9]:nth-of-type(1) {
+    margin-top: 60px;
+}
+</style><style type="text/css">
+.page-scalable p {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 20px;
+}
+.tags {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  padding: 12px;
+}
+.tags .tag {
+    font-size: 18px;
+    line-height: 32px;
+    border-radius: 4px;
+    padding: 2px 8px;
+    border: 1px solid #B5B5B5;
+    color: #B5B5B5;
+    width: auto;
+    float: left;
+    margin-right: 10px;
+}
+.tags .tag.tag-assertive {
+      color: #EA5A49;
+      border: 1px solid #EA5A49;
+}
+</style><style type="text/css">
+.popup.swiper-popup .popup-body {
+  padding: 0;
+}
+.popup.swiper-popup .popup-body p {
+    font-size: 14px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 0;
+}
+.popup.swiper-popup .popup-body .swiper .swiper-item {
+    padding-top: 50px;
+}
+.popup.swiper-popup .popup-body .swiper .swiper-item h1 {
+      color: #fff;
+      font-size: 32px;
+      line-height: 50px;
+      text-align: center;
+      font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+}
+.popup.swiper-popup .popup-body .swiper .swiper-item:nth-of-type(1) {
+      background-color: #0a9dc7;
+}
+.popup.swiper-popup .popup-body .swiper .swiper-item:nth-of-type(2) {
+      background-color: #44cc00;
+}
+.popup.swiper-popup .popup-body .swiper .swiper-item:nth-of-type(3) {
+      background-color: #ffc900;
+}
+</style><style type="text/css">
+.swiper-item[data-v-4a466704] {
+  padding-top: 50px;
+  background-color: #FFF;
+}
+.swiper-item h1[data-v-4a466704] {
+    color: #fff;
+    font-size: 32px;
+    line-height: 50px;
+    text-align: center;
+    font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+}
+.swiper-item:nth-of-type(1) h1[data-v-4a466704] {
+    color: #0a9dc7;
+}
+.swiper-item:nth-of-type(2) h1[data-v-4a466704] {
+    color: #44cc00;
+}
+.swiper-item:nth-of-type(3) h1[data-v-4a466704] {
+    color: #ffc900;
+}
+</style><style type="text/css">
+.swiper-item[data-v-b012b0ee] {
+  padding-top: 50px;
+}
+.swiper-item h1[data-v-b012b0ee] {
+    color: #fff;
+    font-size: 32px;
+    line-height: 50px;
+    text-align: center;
+    font-family: Candara, Calibri, Segoe, Segoe UI, Optima, Arial, sans-serif;
+}
+.swiper-item[data-v-b012b0ee]:nth-of-type(1) {
+    background-color: #0a9dc7;
+}
+.swiper-item[data-v-b012b0ee]:nth-of-type(2) {
+    background-color: #44cc00;
+}
+.swiper-item[data-v-b012b0ee]:nth-of-type(3) {
+    background-color: #ffc900;
+}
+</style><style type="text/css">.swipe-item b[data-v-fd526842]{display:block;font-weight:700;color:#14ade5;font-size:20px;text-align:center;margin:10px;padding:100px 10px;box-shadow:0 1px #ebebeb;background:#fff;border-radius:3px;border:1px solid;border-color:#e5e5e5 #d3d3d3 #b9c1c6}</style><style type="text/css">p[data-v-3b17c21d]{padding:10px 15px 10px 0;font-size:12px;line-height:22px;text-align:justify}</style><style type="text/css">
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+}
+</style></head>
+<body font="pingfang" class="grade-b">
+<div von-app="" transition-direction="forward"><div von-nav="" class="navbar visible" style="transition: all 400ms ease 0s; opacity: 1; position: absolute;"><div class="navbar-container"><div von-navbar="active" class="bar bar-header bar-transparent"><div class="buttons"><button class="button button-icon"><span><i class="icon ion-ios-arrow-back"></i></span></button></div> <h1 class="title" style="transition: all 0ms ease 0s; transform: translate3d(0px, 0px, 0px); opacity: 1;"><span>按钮</span></h1> <!----></div></div></div> <div class="page has-navbar"><div class="page-content padding padding-top"><p>Ionic Theme</p> <button class="button button-assertive button-block">Assertive</button> <button class="button button-positive button-block">Positive</button> <button class="button button-balanced button-block">Balanced</button> <button class="button button-energized button-block">Energized</button> <button class="button button-calm button-block">Calm</button> <button class="button button-royal button-block">Royal</button> <button class="button button-dark button-block">Dark</button> <button class="button button-light button-block">Light</button> <p>Button Styles</p> <button class="button button-positive button-small">Small</button> <button class="button button-positive">Normal</button> <button class="button button-positive button-large">Large</button> <button class="button button-energized button-clear">Clear</button> <button class="button button-calm button-outline">Outline</button> <button class="button button-balanced button-block">Block</button> <button class="button button-light button-full">Full</button> <button class="button button-assertive button-block button-outline">Assertive Block Outline</button></div></div></div>
+
+<script type="text/javascript" src="Vonic_files/manifest.js"></script><script type="text/javascript" src="Vonic_files/vendor.js"></script><script type="text/javascript" src="Vonic_files/main.js"></script>
+
+</body></html>
